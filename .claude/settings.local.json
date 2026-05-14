@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\varun\\\\Documents\\\\AI-Hiring-Platform\" -Force)",
+      "Bash(Select-Object Name, Mode)",
+      "Bash(powershell.exe *)",
+      "Bash(npx eslint *)",
+      "Bash(node -e \"const fs = require\\('fs'\\); const code = fs.readFileSync\\('src/pages/Hired.jsx', 'utf8'\\); console.log\\('File syntax check: OK'\\)\")",
+      "Bash(node -e \"const fs = require\\('fs'\\); const code = fs.readFileSync\\('src/pages/CompanyDashboard.jsx', 'utf8'\\); console.log\\('File syntax check: OK'\\)\")"
+    ]
+  }
+}
