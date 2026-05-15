@@ -22,10 +22,7 @@ export default function Signup() {
   const [loading, setLoading] = useState(false)
   const { login } = useAuth()
   const navigate = useNavigate()
-const signupUrl = `${import.meta.env.VITE_API_URL}/auth/signup/`;
-console.log("SENDING REQUEST TO:", signupUrl); // Check this in F12 console!
 
-const response = await axios.post(signupUrl, payload);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!userType) return alert("Please select an account type");
@@ -74,6 +71,17 @@ const response = await axios.post(signupUrl, payload);
       }
     } finally {
       setLoading(false);
+    }
+    try {
+        const signupUrl = `${import.meta.env.VITE_API_URL}/auth/signup/`;
+        console.log("SENDING REQUEST TO:", signupUrl);
+        
+        // This 'await' only works if the function above has 'async'
+        const response = await axios.post(signupUrl, payload); 
+        
+        // ... handle success ...
+    } catch (err) {
+        console.error(err);
     }
   };
 
