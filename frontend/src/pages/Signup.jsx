@@ -33,6 +33,8 @@ export default function Signup() {
     const payload = {
       email: formData.email,
       password: formData.password,
+      first_name: formData.firstName, // Make sure the KEY is first_name
+      last_name: formData.lastName,
       user_type: userType,
       // For students, send names; for companies, send company details
       ...(userType === 'student' 
