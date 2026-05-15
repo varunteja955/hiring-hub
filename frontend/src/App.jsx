@@ -1,6 +1,7 @@
-import { useState, createContext, useContext } from 'react'
+import { useState, createContext, useContext, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { Toaster } from 'react-hot-toast'
+import { Toaster, toast } from 'react-hot-toast'
+import axios from 'axios'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -11,6 +12,10 @@ import Jobs from './pages/Jobs'
 import JobDetail from './pages/JobDetail'
 import Hired from './pages/Hired'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+
+const BACKEND_URL = import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL.replace('/api', '') : 'http://localhost:8000';
+
 export const AuthContext = createContext(null)
 
 export function useAuth() {
@@ -18,6 +23,22 @@ export function useAuth() {
 }
 
 function App() {
+  useEffect(() => {
+    const checkBackend = async () => {
+      try {
+        await axios.get(`${BACKEND_URL}/`, { timeout: 3000 })
+      } catch (error) {
+        toast.error('Could not connect to backend server. Make sure it is running!', {
+          duration: 8000,
+          style: {
+            background: '#dc2626',
+            color: '#fff',
+          },
+        })
+      }
+    }
+    checkBackend()
+  }, [])
   const [user, setUser] = useState(() => {
     const saved = localStorage.getItem('user')
     return saved ? JSON.parse(saved) : null

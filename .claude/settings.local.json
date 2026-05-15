@@ -6,7 +6,8 @@
       "Bash(powershell.exe *)",
       "Bash(npx eslint *)",
       "Bash(node -e \"const fs = require\\('fs'\\); const code = fs.readFileSync\\('src/pages/Hired.jsx', 'utf8'\\); console.log\\('File syntax check: OK'\\)\")",
-      "Bash(node -e \"const fs = require\\('fs'\\); const code = fs.readFileSync\\('src/pages/CompanyDashboard.jsx', 'utf8'\\); console.log\\('File syntax check: OK'\\)\")"
+      "Bash(node -e \"const fs = require\\('fs'\\); const code = fs.readFileSync\\('src/pages/CompanyDashboard.jsx', 'utf8'\\); console.log\\('File syntax check: OK'\\)\")",
+      "Bash(Remove-Item *)"
     ]
   }
 }

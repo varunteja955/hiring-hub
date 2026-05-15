@@ -5,9 +5,7 @@ import axios from 'axios'
 import { useAuth } from '../App'
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
-// const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
-const API_URL = import.meta.env.VITE_API_URL || 'https://hiring-hub.onrender.com';
-// const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 console.log("Current API URL:", import.meta.env.VITE_API_URL);
 
@@ -28,9 +26,9 @@ export default function Login() {
     };
 
     try {
-        const response = await axios.post(`${API_URL}/api/auth/login/`, loginData);
+        const response = await axios.post(`${API_URL}/auth/login/`, loginPayload);
 
-        const data = await response.json();
+        const data = response.data;
 
           if (response.ok) {
                 const userRole = data.user.role || 'student';
