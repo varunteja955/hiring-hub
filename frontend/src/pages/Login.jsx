@@ -7,8 +7,6 @@ import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
-console.log("Current API URL:", import.meta.env.VITE_API_URL);
-
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

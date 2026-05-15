@@ -12,7 +12,7 @@ const getResumeUrl = (resumePath) => {
   if (!resumePath) return null
   if (resumePath.startsWith('http')) return resumePath
   const filename = resumePath.split('/').pop()
-  return `http://localhost:8000/media/applications/resumes/${filename}`
+  return `${MEDIA_URL}/applications/resumes/${filename}`
 }
 
 export default function Hired() {

@@ -7,6 +7,13 @@ import { Building2, Users, Briefcase, Plus, TrendingUp, CheckCircle, Clock, X, D
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
 const MEDIA_URL = import.meta.env.VITE_MEDIA_URL || 'http://localhost:8000/media'
 
+const getResumeUrl = (resumePath) => {
+  if (!resumePath) return null
+  if (resumePath.startsWith('http')) return resumePath
+  const filename = resumePath.split('/').pop()
+  return `${MEDIA_URL}/applications/resumes/${filename}`
+}
+
 export default function CompanyDashboard() {
   const [profile, setProfile] = useState(null)
   const [jobs, setJobs] = useState([])

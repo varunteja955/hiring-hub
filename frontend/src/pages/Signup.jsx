@@ -49,7 +49,7 @@ export default function Signup() {
 
     try {
       // Note the trailing slash at the end of /signup/ - Django is strict about this
-      const res = await axios.post(`${API_URL}/signup/`, payload);
+      const res = await axios.post(`${API_URL}/auth/signup/`, payload);
       
       // Successfully signed up
       login(res.data.user, res.data.token);
