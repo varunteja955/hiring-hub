@@ -44,10 +44,7 @@ class SignupView(views.APIView):
                 )
 
             token = generate_token(user)
-
-            send_email(email, 'Welcome to AI Hiring Platform',
-                     f'Welcome! Your account has been created.\n\nEmail: {email}')
-
+            
             return Response({
                 'message': 'Account created successfully',
                 'token': token,
