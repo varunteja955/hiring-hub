@@ -5,8 +5,7 @@ import axios from 'axios'
 import { useAuth } from '../App'
 import { Mail, Lock, User, Building2, Eye, EyeOff } from 'lucide-react'
 
-// Use the exact IP address and path defined in your urls.py
-const API_URL = 'http://127.0.0.1:8000/api/auth';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 export default function Signup() {
   const [userType, setUserType] = useState(null)

@@ -26,30 +26,29 @@ export default function Login() {
     };
 
     try {
-        const response = await axios.post(`${API_URL}/auth/login/`, loginPayload);
+        const res = await axios.post(`${API_URL}/auth/login/`, loginPayload);
 
-        const data = response.data;
+        const data = res.data;
 
-          if (response.ok) {
-                const userRole = data.user.role || 'student';
-                const userData = {
-                    email: data.user.email,
-                    id: data.user.id,
-                    role: userRole,
-                    is_verified: data.user.is_verified
-                };
+        if (res.status === 200) {
+            const userRole = data.user.role || 'student';
+            const userData = {
+              email: data.user.email,
+              id: data.user.id,
+              role: userRole,
+              is_verified: data.user.is_verified
+            };
 
-                login(userData, data.token);
+            login(userData, data.token);
 
-                if (userRole === 'company') {
-                    navigate('/company-dashboard');
-                } else {
-                    navigate('/student-dashboard');
-                }
+            if (userRole === 'company') {
+              navigate('/company-dashboard');
+            } else {
+              navigate('/student-dashboard');
             }
-            else {
+          } else {
             alert(data.detail || data.error || 'Login failed');
-        }
+          }
     } catch (error) {
         console.error('Network error:', error);
         alert('Could not connect to backend server. Make sure it is running!');
